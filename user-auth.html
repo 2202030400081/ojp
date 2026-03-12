@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — JobNexus</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-brand"><div class="logo-icon"><i class="fas fa-bolt"></i></div><span class="gradient-text">JobNexus</span></a>
+      <div class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="jobs.html">Browse Jobs</a></div>
+      <div class="nav-actions"><button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button></div>
+    </div>
+  </nav>
+
+  <div class="auth-page">
+    <div class="auth-container">
+      <div style="text-align:center;margin-bottom:24px;">
+        <div class="logo-icon" style="width:56px;height:56px;font-size:1.5rem;margin:0 auto 12px;border-radius:var(--radius-lg);background:linear-gradient(135deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;color:#fff;"><i class="fas fa-bolt"></i></div>
+        <h2>Welcome to <span class="gradient-text">JobNexus</span></h2>
+        <p class="subtitle">Your gateway to dream careers</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login" onclick="switchAuthTab('login')">Sign In</button>
+        <button class="auth-tab" data-tab="register" onclick="switchAuthTab('register')">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <form class="auth-form" id="loginForm" onsubmit="event.preventDefault();showToast('Login successful!','success');setTimeout(()=>window.location.href='user-dashboard.html',1000);">
+        <div class="form-group"><label>Email</label><input class="form-control" type="email" placeholder="you@example.com" required></div>
+        <div class="form-group"><label>Password</label><input class="form-control" type="password" placeholder="••••••••" required></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+          <label class="form-check"><input type="checkbox"> Remember me</label>
+          <a href="#" style="font-size:0.85rem;color:var(--primary-light);">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%;"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+        <div class="divider">or continue with</div>
+        <div style="display:flex;gap:12px;">
+          <button type="button" class="btn btn-ghost" style="flex:1;"><i class="fab fa-google"></i> Google</button>
+          <button type="button" class="btn btn-ghost" style="flex:1;"><i class="fab fa-linkedin-in"></i> LinkedIn</button>
+        </div>
+      </form>
+
+      <!-- Register Form -->
+      <form class="auth-form hidden" id="registerForm" onsubmit="event.preventDefault();showToast('Account created! Redirecting...','success');setTimeout(()=>window.location.href='user-dashboard.html',1000);">
+        <div class="form-row">
+          <div class="form-group"><label>Full Name *</label><input class="form-control" placeholder="John Doe" required></div>
+          <div class="form-group"><label>Age *</label><input class="form-control" type="number" min="18" placeholder="28" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Gender *</label>
+            <select class="form-control" required><option value="">Select</option><option>Male</option><option>Female</option><option>Non-binary</option><option>Prefer not to say</option></select>
+          </div>
+          <div class="form-group"><label>Marital Status</label>
+            <select class="form-control"><option value="">Select</option><option>Single</option><option>Married</option><option>Other</option></select>
+          </div>
+        </div>
+        <div class="form-group"><label>Email *</label><input class="form-control" type="email" placeholder="you@example.com" required></div>
+        <div class="form-group"><label>Phone Number *</label><input class="form-control" type="tel" placeholder="+1 (555) 000-0000" required></div>
+        <div class="form-row">
+          <div class="form-group"><label>Password *</label><input class="form-control" type="password" placeholder="Min 8 characters" required minlength="8"></div>
+          <div class="form-group"><label>Confirm Password *</label><input class="form-control" type="password" placeholder="••••••••" required></div>
+        </div>
+        <div class="form-group"><label>Skills</label><input class="form-control" placeholder="e.g. JavaScript, React, Design (comma separated)"></div>
+        <div class="form-group"><label>Expected Salary</label><input class="form-control" placeholder="e.g. $80,000/year"></div>
+        <div class="form-group"><label>Upload Resume</label>
+          <div class="file-upload" onclick="this.querySelector('input').click()">
+            <input type="file" accept=".pdf,.doc,.docx" style="display:none">
+            <i class="fas fa-cloud-upload-alt"></i><p>Click to upload (PDF, DOC)</p>
+          </div>
+        </div>
+        <label class="form-check" style="margin-bottom:20px;"><input type="checkbox" required> I agree to the Terms of Service and Privacy Policy</label>
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%;"><i class="fas fa-user-plus"></i> Create Account</button>
+      </form>
+
+      <p style="text-align:center;margin-top:20px;font-size:0.85rem;color:var(--text-muted);">
+        Are you an employer? <a href="company-auth.html" style="color:var(--primary-light);font-weight:600;">Register your company</a>
+      </p>
+    </div>
+  </div>
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="scripts/data.js"></script><script src="scripts/app.js"></script>
+</body>
+</html>

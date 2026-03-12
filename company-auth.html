@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employer Login — JobNexus</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-brand"><div class="logo-icon"><i class="fas fa-bolt"></i></div><span class="gradient-text">JobNexus</span></a>
+      <div class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="jobs.html">Browse Jobs</a><a href="company-auth.html" class="active">For Employers</a></div>
+      <div class="nav-actions"><button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button></div>
+    </div>
+  </nav>
+
+  <div class="auth-page">
+    <div class="auth-container" style="max-width:540px;">
+      <div style="text-align:center;margin-bottom:24px;">
+        <div style="width:56px;height:56px;border-radius:var(--radius-lg);background:linear-gradient(135deg,var(--accent),#F97316);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:1.5rem;color:#fff;"><i class="fas fa-building"></i></div>
+        <h2>Employer <span class="gradient-text">Portal</span></h2>
+        <p class="subtitle">Post jobs and find top talent</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login" onclick="switchAuthTab('login')">Sign In</button>
+        <button class="auth-tab" data-tab="register" onclick="switchAuthTab('register')">Register Company</button>
+      </div>
+
+      <!-- Company Login -->
+      <form class="auth-form" id="loginForm" onsubmit="event.preventDefault();showToast('Welcome back!','success');setTimeout(()=>window.location.href='company-dashboard.html',1000);">
+        <div class="form-group"><label>Company Email</label><input class="form-control" type="email" placeholder="hr@company.com" required></div>
+        <div class="form-group"><label>Password</label><input class="form-control" type="password" placeholder="••••••••" required></div>
+        <button type="submit" class="btn btn-accent btn-lg" style="width:100%;"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+      </form>
+
+      <!-- Company Register -->
+      <form class="auth-form hidden" id="registerForm" onsubmit="event.preventDefault();showToast('Company registered!','success');setTimeout(()=>window.location.href='company-dashboard.html',1000);">
+        <div class="form-group"><label>Company Name *</label><input class="form-control" placeholder="Acme Corporation" required></div>
+        <div class="form-group"><label>Company Email *</label><input class="form-control" type="email" placeholder="hr@company.com" required></div>
+        <div class="form-row">
+          <div class="form-group"><label>Password *</label><input class="form-control" type="password" placeholder="Min 8 chars" required minlength="8"></div>
+          <div class="form-group"><label>Confirm Password *</label><input class="form-control" type="password" placeholder="••••••••" required></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Industry Type *</label>
+            <select class="form-control" required><option value="">Select</option><option>Technology</option><option>Finance</option><option>Healthcare</option><option>Education</option><option>Marketing</option><option>Design</option><option>Retail</option><option>Other</option></select>
+          </div>
+          <div class="form-group"><label>Company Size *</label>
+            <select class="form-control" required><option value="">Select</option><option>1-10</option><option>11-50</option><option>51-200</option><option>201-1000</option><option>1000+</option></select>
+          </div>
+        </div>
+        <div class="form-group"><label>Company Description *</label><textarea class="form-control" placeholder="Tell us about your company..." required></textarea></div>
+        <div class="form-group"><label>Website (optional)</label><input class="form-control" type="url" placeholder="https://company.com"></div>
+        <div class="form-group"><label>Company Logo (optional)</label>
+          <div class="file-upload" onclick="this.querySelector('input').click()">
+            <input type="file" accept="image/*" style="display:none"><i class="fas fa-image"></i><p>Upload company logo (PNG, JPG)</p>
+          </div>
+        </div>
+        <label class="form-check" style="margin-bottom:20px;"><input type="checkbox" required> I agree to the Employer Terms</label>
+        <button type="submit" class="btn btn-accent btn-lg" style="width:100%;"><i class="fas fa-building"></i> Register Company</button>
+      </form>
+
+      <p style="text-align:center;margin-top:20px;font-size:0.85rem;color:var(--text-muted);">
+        Looking for a job? <a href="user-auth.html" style="color:var(--primary-light);font-weight:600;">Sign up as a job seeker</a>
+      </p>
+    </div>
+  </div>
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="scripts/data.js"></script><script src="scripts/app.js"></script>
+</body>
+</html>

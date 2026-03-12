@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Dashboard — JobNexus</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-brand"><div class="logo-icon"><i class="fas fa-bolt"></i></div><span class="gradient-text">JobNexus</span></a>
+      <div class="nav-links" id="navLinks"><a href="index.html">Home</a><a href="jobs.html">Browse Jobs</a></div>
+      <div class="nav-actions">
+        <div style="position:relative;">
+          <button class="btn btn-icon btn-ghost" onclick="this.nextElementSibling.classList.toggle('show')" style="position:relative;">
+            <i class="fas fa-bell"></i><span class="notif-badge-count">5</span>
+          </button>
+          <div class="notif-dropdown">
+            <div class="notif-item"><div class="notif-icon" style="background:rgba(16,185,129,0.15);color:var(--success);"><i class="fas fa-user-check"></i></div><div><div class="notif-text"><strong>John Doe</strong> applied for Frontend Developer</div><div class="notif-time">1 hour ago</div></div></div>
+            <div class="notif-item"><div class="notif-icon" style="background:rgba(108,60,225,0.15);color:var(--primary-light);"><i class="fas fa-eye"></i></div><div><div class="notif-text">Your <strong>DevOps Engineer</strong> listing got 24 views today</div><div class="notif-time">3 hours ago</div></div></div>
+            <div class="notif-item"><div class="notif-icon" style="background:rgba(245,158,11,0.15);color:var(--accent);"><i class="fas fa-star"></i></div><div><div class="notif-text">A new <strong>5-star review</strong> was posted for your company</div><div class="notif-time">6 hours ago</div></div></div>
+          </div>
+        </div>
+        <div class="company-avatar" style="width:36px;height:36px;font-size:0.85rem;cursor:pointer;background:linear-gradient(135deg,var(--accent),#F97316);">N</div>
+        <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div style="padding:0 24px 24px;border-bottom:1px solid var(--border);margin-bottom:16px;">
+        <div class="company-avatar" style="width:64px;height:64px;font-size:1.5rem;margin-bottom:12px;background:linear-gradient(135deg,var(--primary),var(--secondary));">N</div>
+        <h4>NovaTech</h4>
+        <p style="font-size:0.8rem;color:var(--text-muted);">Technology Company</p>
+      </div>
+      <div class="sidebar-menu">
+        <a href="#" class="active" data-tab="overview" onclick="event.preventDefault();switchDashTab('overview')"><i class="fas fa-th-large"></i> Overview</a>
+        <a href="#" data-tab="postjob" onclick="event.preventDefault();switchDashTab('postjob')"><i class="fas fa-plus-circle"></i> Post New Job</a>
+        <a href="#" data-tab="listings" onclick="event.preventDefault();switchDashTab('listings')"><i class="fas fa-list"></i> Job Listings</a>
+        <a href="#" data-tab="applicants" onclick="event.preventDefault();switchDashTab('applicants')"><i class="fas fa-users"></i> Applicants</a>
+        <a href="#" data-tab="companyprofile" onclick="event.preventDefault();switchDashTab('companyprofile')"><i class="fas fa-building"></i> Company Profile</a>
+        <a href="index.html" style="margin-top:24px;color:var(--danger);"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </div>
+    </aside>
+
+    <main class="dash-main">
+      <!-- Overview -->
+      <div class="dash-tab-content" id="overview">
+        <div class="dash-header"><h1>Company <span class="gradient-text">Dashboard</span></h1></div>
+        <div class="stat-cards">
+          <div class="stat-card"><div class="stat-icon purple"><i class="fas fa-briefcase"></i></div><div class="stat-value">12</div><div class="stat-label">Active Listings</div></div>
+          <div class="stat-card"><div class="stat-icon teal"><i class="fas fa-users"></i></div><div class="stat-value">48</div><div class="stat-label">Total Applicants</div></div>
+          <div class="stat-card"><div class="stat-icon green"><i class="fas fa-eye"></i></div><div class="stat-value">1.2K</div><div class="stat-label">Listing Views</div></div>
+          <div class="stat-card"><div class="stat-icon orange"><i class="fas fa-star"></i></div><div class="stat-value">4.8</div><div class="stat-label">Company Rating</div></div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-header"><h3>Recent Applicants</h3><a href="#" class="btn btn-ghost btn-sm" onclick="event.preventDefault();switchDashTab('applicants')">View All</a></div>
+          <table class="data-table">
+            <thead><tr><th>Name</th><th>Position</th><th>Applied</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>John Doe</td><td>Sr. Frontend Developer</td><td>Mar 10</td><td><span class="status-dot active">In Review</span></td><td><button class="btn btn-primary btn-sm">View</button></td></tr>
+              <tr><td>Sarah Kim</td><td>Backend Engineer</td><td>Mar 9</td><td><span class="status-dot pending">Pending</span></td><td><button class="btn btn-primary btn-sm">View</button></td></tr>
+              <tr><td>Mike Chen</td><td>DevOps Engineer</td><td>Mar 8</td><td><span class="status-dot active">Interview</span></td><td><button class="btn btn-primary btn-sm">View</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Post Job -->
+      <div class="dash-tab-content hidden" id="postjob">
+        <div class="dash-header"><h1>Post a <span class="gradient-text">New Job</span></h1></div>
+        <div class="dash-card">
+          <form onsubmit="submitPostJob(event)">
+            <div class="form-group"><label>Job Title *</label><input class="form-control" placeholder="e.g. Senior Frontend Developer" required></div>
+            <div class="form-row">
+              <div class="form-group"><label>Job Type *</label><select class="form-control" required><option value="">Select</option><option>Full-time</option><option>Part-time</option><option>Remote</option><option>Contract</option><option>Internship</option></select></div>
+              <div class="form-group"><label>Location *</label><input class="form-control" placeholder="e.g. San Francisco, CA" required></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Min Salary *</label><input class="form-control" placeholder="e.g. $100,000" required></div>
+              <div class="form-group"><label>Max Salary *</label><input class="form-control" placeholder="e.g. $150,000" required></div>
+            </div>
+            <div class="form-group"><label>Job Description *</label><textarea class="form-control" placeholder="Describe the role, responsibilities, and what the candidate will work on..." required style="min-height:150px;"></textarea></div>
+            <div class="form-group"><label>Required Skills *</label><input class="form-control" placeholder="e.g. React, TypeScript, Node.js (comma separated)" required></div>
+            <div class="form-row">
+              <div class="form-group"><label>Experience Required *</label><input class="form-control" placeholder="e.g. 3+ years" required></div>
+              <div class="form-group"><label>Working Hours</label><input class="form-control" placeholder="e.g. 9 AM - 5 PM"></div>
+            </div>
+            <div class="form-group"><label>Leave Policy</label><input class="form-control" placeholder="e.g. 20 days PTO + holidays"></div>
+            <div style="display:flex;gap:12px;margin-top:8px;">
+              <button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-paper-plane"></i> Publish Job</button>
+              <button type="button" class="btn btn-ghost btn-lg"><i class="fas fa-save"></i> Save Draft</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Listings -->
+      <div class="dash-tab-content hidden" id="listings">
+        <div class="dash-header"><h1>Job <span class="gradient-text">Listings</span></h1><button class="btn btn-primary" onclick="switchDashTab('postjob')"><i class="fas fa-plus"></i> New Job</button></div>
+        <div class="dash-card">
+          <table class="data-table">
+            <thead><tr><th>Job Title</th><th>Type</th><th>Applicants</th><th>Posted</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td>Sr. Frontend Developer</td><td><span class="badge badge-info">Full-time</span></td><td>18</td><td>Mar 1</td><td><span class="status-dot active">Active</span></td><td><button class="btn btn-ghost btn-sm"><i class="fas fa-edit"></i></button> <button class="btn btn-ghost btn-sm" style="color:var(--danger);"><i class="fas fa-trash"></i></button></td></tr>
+              <tr><td>Backend Engineer</td><td><span class="badge badge-info">Full-time</span></td><td>12</td><td>Feb 25</td><td><span class="status-dot active">Active</span></td><td><button class="btn btn-ghost btn-sm"><i class="fas fa-edit"></i></button> <button class="btn btn-ghost btn-sm" style="color:var(--danger);"><i class="fas fa-trash"></i></button></td></tr>
+              <tr><td>DevOps Engineer</td><td><span class="badge badge-info">Full-time</span></td><td>8</td><td>Feb 20</td><td><span class="status-dot active">Active</span></td><td><button class="btn btn-ghost btn-sm"><i class="fas fa-edit"></i></button> <button class="btn btn-ghost btn-sm" style="color:var(--danger);"><i class="fas fa-trash"></i></button></td></tr>
+              <tr><td>Content Writer</td><td><span class="badge badge-warning">Part-time</span></td><td>6</td><td>Feb 15</td><td><span class="status-dot closed">Closed</span></td><td><button class="btn btn-ghost btn-sm"><i class="fas fa-edit"></i></button> <button class="btn btn-ghost btn-sm" style="color:var(--danger);"><i class="fas fa-trash"></i></button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Applicants -->
+      <div class="dash-tab-content hidden" id="applicants">
+        <div class="dash-header"><h1>All <span class="gradient-text">Applicants</span></h1></div>
+        <div class="dash-card">
+          <table class="data-table">
+            <thead><tr><th>Name</th><th>Email</th><th>Position</th><th>Expected Salary</th><th>Applied</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>John Doe</td><td>john@example.com</td><td>Sr. Frontend Dev</td><td>$140K</td><td>Mar 10</td><td><span class="status-dot active">In Review</span></td></tr>
+              <tr><td>Sarah Kim</td><td>sarah@example.com</td><td>Backend Engineer</td><td>$130K</td><td>Mar 9</td><td><span class="status-dot pending">Pending</span></td></tr>
+              <tr><td>Mike Chen</td><td>mike@example.com</td><td>DevOps Engineer</td><td>$150K</td><td>Mar 8</td><td><span class="status-dot active">Interview</span></td></tr>
+              <tr><td>Emily Davis</td><td>emily@example.com</td><td>Sr. Frontend Dev</td><td>$120K</td><td>Mar 7</td><td><span class="status-dot closed">Rejected</span></td></tr>
+              <tr><td>Alex Rivera</td><td>alex@example.com</td><td>Backend Engineer</td><td>$125K</td><td>Mar 6</td><td><span class="status-dot pending">Pending</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Company Profile -->
+      <div class="dash-tab-content hidden" id="companyprofile">
+        <div class="dash-header"><h1>Company <span class="gradient-text">Profile</span></h1></div>
+        <div class="profile-header-card">
+          <div class="company-avatar" style="width:100px;height:100px;font-size:2.5rem;border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--primary),var(--secondary));">N</div>
+          <div class="profile-info">
+            <h2>NovaTech</h2>
+            <span class="email">hr@novatech.com</span>
+            <p class="bio">Leading technology company building innovative solutions for the modern web.</p>
+            <div style="display:flex;gap:8px;margin-top:8px;">
+              <span class="badge badge-primary">Technology</span>
+              <span class="badge badge-info">201-1000 employees</span>
+              <span class="badge badge-success">⭐ 4.8 rating</span>
+            </div>
+          </div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-header"><h3>Edit Company Profile</h3></div>
+          <form onsubmit="saveProfile(event)">
+            <div class="form-group"><label>Company Name</label><input class="form-control" value="NovaTech"></div>
+            <div class="form-group"><label>Company Email</label><input class="form-control" type="email" value="hr@novatech.com"></div>
+            <div class="form-row">
+              <div class="form-group"><label>Industry Type</label><select class="form-control"><option selected>Technology</option><option>Finance</option><option>Healthcare</option><option>Marketing</option></select></div>
+              <div class="form-group"><label>Company Size</label><select class="form-control"><option>1-10</option><option>11-50</option><option>51-200</option><option selected>201-1000</option><option>1000+</option></select></div>
+            </div>
+            <div class="form-group"><label>Description</label><textarea class="form-control">Leading technology company building innovative solutions for the modern web. We focus on creating scalable, performant applications that make a difference.</textarea></div>
+            <div class="form-group"><label>Website</label><input class="form-control" type="url" value="https://novatech.com"></div>
+            <div class="form-group"><label>Company Logo</label>
+              <div class="file-upload" onclick="this.querySelector('input').click()"><input type="file" accept="image/*" style="display:none"><i class="fas fa-image"></i><p>Click to upload new logo</p></div>
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Changes</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="scripts/data.js"></script><script src="scripts/app.js"></script>
+</body>
+</html>

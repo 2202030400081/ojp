@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Details — JobNexus</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-brand"><div class="logo-icon"><i class="fas fa-bolt"></i></div><span class="gradient-text">JobNexus</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a><a href="jobs.html">Browse Jobs</a><a href="company-auth.html">For Employers</a>
+      </div>
+      <div class="nav-actions">
+        <a href="user-auth.html" class="btn btn-ghost btn-sm">Sign In</a>
+        <a href="user-auth.html#register" class="btn btn-primary btn-sm">Get Started</a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="job-detail-page">
+    <div class="container" id="jobDetail">
+      <div style="text-align:center;padding:80px 0;color:var(--text-muted);">
+        <i class="fas fa-spinner fa-spin" style="font-size:2rem;margin-bottom:16px;display:block;"></i>
+        <p>Loading job details...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apply Modal -->
+  <div class="modal-overlay" id="applyModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Apply for this Job</h2>
+        <button class="modal-close" onclick="closeApplyModal()"><i class="fas fa-times"></i></button>
+      </div>
+      <form onsubmit="submitApplication(event)">
+        <div class="form-row">
+          <div class="form-group"><label>Full Name *</label><input class="form-control" placeholder="John Doe" required></div>
+          <div class="form-group"><label>Age *</label><input class="form-control" type="number" placeholder="28" required min="18"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Gender *</label>
+            <select class="form-control" required><option value="">Select</option><option>Male</option><option>Female</option><option>Non-binary</option><option>Prefer not to say</option></select>
+          </div>
+          <div class="form-group"><label>Marital Status</label>
+            <select class="form-control"><option value="">Select</option><option>Single</option><option>Married</option><option>Other</option></select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Phone Number *</label><input class="form-control" type="tel" placeholder="+1 (555) 000-0000" required></div>
+          <div class="form-group"><label>Email *</label><input class="form-control" type="email" placeholder="john@example.com" required></div>
+        </div>
+        <div class="form-group"><label>Expected Salary</label><input class="form-control" placeholder="e.g. $120,000/year"></div>
+        <div class="form-group"><label>Short Introduction / Cover Letter *</label><textarea class="form-control" placeholder="Tell us about yourself and why you're a great fit for this role..." required></textarea></div>
+        <div class="form-group"><label>Resume Upload *</label>
+          <div class="file-upload" onclick="this.querySelector('input').click()">
+            <input type="file" accept=".pdf,.doc,.docx" style="display:none" required>
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Click to upload your resume (PDF, DOC)</p>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%;margin-top:8px;"><i class="fas fa-paper-plane"></i> Submit Application</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container"><div class="footer-bottom"><span>&copy; 2026 JobNexus. All rights reserved.</span></div></div>
+  </footer>
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="scripts/data.js"></script><script src="scripts/app.js"></script>
+</body>
+</html>
