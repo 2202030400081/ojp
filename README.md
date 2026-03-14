@@ -1,1 +1,1 @@
-This project is an Online Job Portal web application developed using HTML, CSS, JavaScript, and Python. It allows users to register, log in, and search for different job opportunities. Users can view detailed information about each job such as salary, location, and company name.
+This project is an Online Job Portal web application developed using HTML, CSS, JavaScript, and . It allows users to register, log in, and search for different job opportunities. Users can view detailed information about each job such as salary, location, and company name.
